@@ -26,10 +26,26 @@ function setDetailsFromThumb(thumbnail) {
   setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
 }
 
-function addThumbClickHandler(thumb){
-'use strict';
-thumb.addEventListener('click', function(event) {
-  event.preventDefault();
-  setDetailsFromThumb(thumb);
-});
+function addThumbClickHandler(thumb) {
+  'use strict';
+  thumb.addEventListener('click', function(event) {
+    event.preventDefault();
+    setDetailsFromThumb(thumb);
+  });
 }
+
+function getThumbnailsArray(){
+  'use strict';
+  var thumbnails = document.querySelectorAll(THUMBNAIL_LINK_SELECTOR);
+  var thumbnailsArray = [].slice.call(thumbnails);
+  return thumbnailsArray;
+}
+
+function initializeEvents(){
+  'use strict';
+  var thumbnails = getThumbnailsArray();
+  thumbnails.forEach(addThumbClickHandler);
+  });
+}
+
+initializeEvents();
